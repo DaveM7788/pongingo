@@ -16,12 +16,12 @@ import (
 const (
 	screenWidth  = 640
 	screenHeight = 480
-	ballSpeed    = 5
-	paddleSpeed  = 6
+	ballSpeed    = 3.0
+	paddleSpeed  = 10.0
 )
 
 type Object struct {
-	X, Y, W, H int
+	X, Y, W, H float32
 }
 
 type Paddle struct {
@@ -30,8 +30,8 @@ type Paddle struct {
 
 type Ball struct {
 	Object
-	dxdt int
-	dydt int
+	dxdt float32
+	dydt float32
 }
 
 type Game struct {
