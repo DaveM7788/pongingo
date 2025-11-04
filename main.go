@@ -61,10 +61,10 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		color.White, false)
 
 	scoreStr := "Score: " + fmt.Sprint(g.score)
-	text.Draw(screen, scoreStr, basicfont.Face7x13, 10, 10, color.White)
+	text.Draw(screen, scoreStr, basicfont.Face7x13, 10, 20, color.White)
 
 	highScoreStr := "High Score: " + fmt.Sprint(g.highScore)
-	text.Draw(screen, highScoreStr, basicfont.Face7x13, 10, 30, color.White)
+	text.Draw(screen, highScoreStr, basicfont.Face7x13, 10, 40, color.White)
 
 }
 
