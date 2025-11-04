@@ -16,8 +16,8 @@ import (
 const (
 	screenWidth  = 640
 	screenHeight = 480
-	ballSpeed    = 3.0
-	paddleSpeed  = 10.0
+	ballSpeed    = 5.0
+	paddleSpeed  = 7.0
 )
 
 type Object struct {
@@ -105,7 +105,7 @@ func (g *Game) CollideWithWall() {
 }
 
 func (g *Game) CollideWithPaddle() {
-	if g.ball.X >= g.paddle.X && g.ball.X <= g.paddle.X+g.paddle.W {
+	if g.ball.X >= g.paddle.X && !(g.ball.X >= g.paddle.X+g.paddle.W) {
 		if g.ball.Y >= g.paddle.Y && g.ball.Y <= g.paddle.Y+g.paddle.H {
 			g.ball.dxdt = -g.ball.dxdt
 			g.score++
@@ -119,10 +119,11 @@ func (g *Game) CollideWithPaddle() {
 func main() {
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Pong")
+	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 
 	paddle := Paddle{
 		Object: Object{
-			X: 600,
+			X: 625,
 			Y: 200,
 			W: 15,
 			H: 100,
