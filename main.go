@@ -14,10 +14,10 @@ import (
 )
 
 const (
-	screenWidth  = 640
-	screenHeight = 480
-	ballSpeed    = 5.0
-	paddleSpeed  = 7.0
+	screenWidth  = 1280
+	screenHeight = 960
+	ballSpeed    = 7.0
+	paddleSpeed  = 9.0
 )
 
 type Object struct {
@@ -69,7 +69,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 640, 480
+	return 1280, 960
 }
 
 func (p *Paddle) MoveOnKeyPress() {
@@ -117,13 +117,13 @@ func (g *Game) CollideWithPaddle() {
 }
 
 func main() {
-	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Pong")
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 
 	paddle := Paddle{
 		Object: Object{
-			X: 625,
+			X: 1250,
 			Y: 200,
 			W: 15,
 			H: 100,
