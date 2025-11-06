@@ -105,8 +105,13 @@ func (g *Game) CollideWithWall() {
 }
 
 func (g *Game) CollideWithPaddle() {
-	if g.ball.X >= g.paddle.X && !(g.ball.X >= g.paddle.X+g.paddle.W) {
-		if g.ball.Y >= g.paddle.Y && g.ball.Y <= g.paddle.Y+g.paddle.H {
+	ballRightEdge := g.ball.X + g.ball.W
+	ballLeftEdge := g.ball.X
+	ballTopEdge := g.ball.Y
+	ballBottomEdge := g.ball.Y + g.ball.H
+
+	if ballRightEdge >= g.paddle.X && ballLeftEdge <= g.paddle.X+g.paddle.W {
+		if ballBottomEdge >= g.paddle.Y && ballTopEdge <= g.paddle.Y+g.paddle.H {
 			g.ball.dxdt = -g.ball.dxdt
 			g.score++
 			if g.score > g.highScore {
@@ -123,7 +128,7 @@ func main() {
 
 	paddle := Paddle{
 		Object: Object{
-			X: 1250,
+			X: 1260,
 			Y: 200,
 			W: 15,
 			H: 100,
